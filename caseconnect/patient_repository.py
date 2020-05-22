@@ -2,7 +2,7 @@ from .data_reader.csv_data_reader import CSVDataReader
 from .result_retriever import ResultRetriever
 
 class PatientRepository:
-    data_source = "./data/patients.csv"
+    data_source = "./example_data/patients.csv"
     data_reader = CSVDataReader()
     result_retriever = ResultRetriever()
     patients = []
