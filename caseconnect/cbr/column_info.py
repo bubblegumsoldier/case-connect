@@ -1,5 +1,5 @@
+from .i_similarity_calculator import ISimilarityCalculator
 from .mock_similarity_calculator import MockSimilarityCalculator
-
 column_info = {
         'id': {
             "weight": 0,
@@ -16,7 +16,7 @@ column_info = {
         # ...
     }
 
-def get_similarity_calculator_for_column(column_id):
+def get_similarity_calculator_for_column(column_id) -> ISimilarityCalculator:
     return column_info[column_id]["sim"]
 
 def get_default_weight_for_column(column_id):

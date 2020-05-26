@@ -11,9 +11,9 @@ class ResultRetriever:
         return self.retrieve_result_for_patient(case_base, query_patient, n)
     
     def retrieve_result_for_patient(self, case_base, patient, n=8):
-        rankings = [{"patient": p, "ranking": self.get_similarity(patient, p)} for p in case_base]
-        sorted_patients = sorted(rankings, key=lambda x: x["ranking"], reverse=True)
+        rankings = [{"patient": p, "global_similarity": self.get_global_similarity(patient, p)} for p in case_base]
+        sorted_patients = sorted(rankings, key=lambda x: x["global_similarity"].overall_score, reverse=True)
         return sorted_patients
     
-    def get_similarity(self, query_patient, case_base_patient):
+    def get_global_similarity(self, query_patient, case_base_patient):
         return self.global_similarity_calculator.get_similarity(query_patient, case_base_patient)
