@@ -2,8 +2,6 @@ from .i_similarity_calculator import ISimilarityCalculator
 from .results.i_similarity_result import ISimilarityResult
 from .results.local_similarity_result import LocalSimilarityResult
 
-import random
-
 class MockSimilarityCalculator(ISimilarityCalculator):
     """
     An example similarity calculator that can only compare two float values
