@@ -19,5 +19,5 @@ column_info = {
 def get_similarity_calculator_for_column(column_id) -> ISimilarityCalculator:
     return column_info[column_id]["sim"]
 
-def get_default_weight_for_column(column_id):
+def get_default_weight_for_column(column_id) -> float:
     return column_info[column_id]["weight"]
