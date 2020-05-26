@@ -1,8 +1,9 @@
 from .i_data_reader import IDataReader
 from caseconnect.model.patient import Patient
+from typing import List
 
 class CSVDataReader(IDataReader):
-    def retrieve_patients(self, filepath):
+    def retrieve_patients(self, filepath) -> List[Patient]:
         import csv
         patient_list = []
         with open(filepath, 'r') as f:

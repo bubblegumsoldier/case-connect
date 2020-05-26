@@ -7,6 +7,17 @@ from .column_info import get_default_weight_for_column
 from typing import List
 
 class GlobalSimilarityCalculator(ISimilarityCalculator):
+    """
+    A class that should be used for comparing to patients with each other.
+
+    It will use default weights for each parameter of a Patient (defined in .column_info)
+    and furthermore will use the attribute custom_weights for weighting the already weighted
+    scores again.
+
+    For each column the SimilarityCalculator that is defined in column_info will be used. Of None is
+    present that column will be skipped.
+    """
+
     custom_weights = {
         "main_diagnosis": 10
     }

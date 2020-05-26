@@ -1,4 +1,5 @@
-- global_similarity: !!python/object:caseconnect.cbr.results.global_similarity_result.GlobalSimilarityResult
+- !!python/object:caseconnect.patient_similarity_wrapper.PatientSimilarityWrapper
+  global_similarity: !!python/object:caseconnect.cbr.results.global_similarity_result.GlobalSimilarityResult
     local_similarity_wrappers:
     - !!python/object:caseconnect.cbr.results.local_similarity_result_wrapper.LocalSimilarityResultWrapper
       column_id: main_diagnosis
@@ -25,7 +26,8 @@
     id: '2'
     main_diagnosis: '21'
     secondary_diagnosis: '0'
-- global_similarity: !!python/object:caseconnect.cbr.results.global_similarity_result.GlobalSimilarityResult
+- !!python/object:caseconnect.patient_similarity_wrapper.PatientSimilarityWrapper
+  global_similarity: !!python/object:caseconnect.cbr.results.global_similarity_result.GlobalSimilarityResult
     local_similarity_wrappers:
     - !!python/object:caseconnect.cbr.results.local_similarity_result_wrapper.LocalSimilarityResultWrapper
       column_id: main_diagnosis
@@ -52,7 +54,8 @@
     id: '1'
     main_diagnosis: '8'
     secondary_diagnosis: '25'
-- global_similarity: !!python/object:caseconnect.cbr.results.global_similarity_result.GlobalSimilarityResult
+- !!python/object:caseconnect.patient_similarity_wrapper.PatientSimilarityWrapper
+  global_similarity: !!python/object:caseconnect.cbr.results.global_similarity_result.GlobalSimilarityResult
     local_similarity_wrappers:
     - !!python/object:caseconnect.cbr.results.local_similarity_result_wrapper.LocalSimilarityResultWrapper
       column_id: main_diagnosis

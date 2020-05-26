@@ -1,4 +1,5 @@
 from .patient_repository import PatientRepository
+import json
 from yaml import dump
 from yaml import load, dump
 try:

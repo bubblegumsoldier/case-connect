@@ -1,4 +1,8 @@
 class Patient:
+    """
+    The Patient object. The initialization will not happen here. For this take a look at the
+    CSVDataReader class.
+    """
     def __init__(self,
         id,
         main_diagnosis,
