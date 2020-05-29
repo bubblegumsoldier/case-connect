@@ -17,6 +17,7 @@ class LocalLevenstheinSimilarityCalculator(ISimilarityCalculator):
         self.max_number = max_number
 
     def get_similarity(self, a, b) -> ISimilarityResult:
+        # pylint: disable=no-member
         distance = Levenshtein.distance(a, b)
         similarity = 1 - float(float(distance) / float(self.max_number))
         similarity = max(0, similarity) #min = 0
