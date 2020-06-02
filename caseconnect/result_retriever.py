@@ -23,7 +23,7 @@ class ResultRetriever:
         query_patient, case_base = self._split_patients(all_patients, patient_id)
         return self._retrieve_result_for_patient(case_base, query_patient, n)
 
-    def _split_patients(self, patients, patient_id) -> Tuple[Patient, List[Patient]]:
+    def _split_patients(self, patients, patient_id :str) -> Tuple[Patient, List[Patient]]:
         """
         Will split a given list of patients into the patient with the given ID and all other patients
         """

@@ -4,7 +4,7 @@ from typing import List
 from .patient_similarity_wrapper import PatientSimilarityWrapper
 
 class PatientRepository:
-    data_source = "./example_data/patients.csv"
+    data_source = "./example_data/PreprocessingTabelle.csv"
     data_reader = CSVDataReader()
     result_retriever = ResultRetriever()
     patients = []
@@ -25,7 +25,7 @@ class PatientRepository:
         
         self.patients = self.data_reader.retrieve_patients(self.data_source)
 
-    def retrieve_similar_patients(self, query_patient_id :int, n :int=8) -> List[PatientSimilarityWrapper]:
+    def retrieve_similar_patients(self, query_patient_id :str, n :int=8) -> List[PatientSimilarityWrapper]:
         """
         Method to retrieve similar patients for a patient
 
