@@ -1,25 +1,4 @@
 from .i_similarity_calculator import ISimilarityCalculator
-# from .mock_similarity_calculator import MockSimilarityCalculator
-# from .local_levensthein_similarity import LocalLevenstheinSimilarityCalculator
-# column_info = {
-#         'id': {
-#             "weight": 0,
-#             "sim": None
-#         },
-#         'main_diagnosis': {
-#             "weight": 4,
-#             "sim": MockSimilarityCalculator()
-#         },
-#         'secondary_diagnosis': {
-#             "weight": 1,
-#             "sim": MockSimilarityCalculator()
-#         },
-#         'text': {
-#             "weight": 10,
-#             "sim": LocalLevenstheinSimilarityCalculator(4)
-#         }
-#         # ...
-#     }
 
 from caseconnect.data_reader.csv_data_reader import CSVDataReader
 

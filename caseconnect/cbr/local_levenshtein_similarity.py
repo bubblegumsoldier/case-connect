@@ -4,7 +4,7 @@ from .results.local_similarity_result import LocalSimilarityResult
 
 import Levenshtein
 
-class LocalLevenstheinSimilarityCalculator(ISimilarityCalculator):
+class LocalLevenshteinSimilarityCalculator(ISimilarityCalculator):
     """
     An example similarity calculator that compares two strings
     using the levensthein distance and a maximal number from which
