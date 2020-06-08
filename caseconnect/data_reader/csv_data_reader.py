@@ -6,7 +6,7 @@ class CSVDataReader(IDataReader):
     def retrieve_patients(self, filepath) -> List[Patient]:
         import csv
         patient_list = []
-        with open(filepath, 'r') as f:
+        with open(filepath, 'r', encoding="utf-8") as f:
             reader = csv.reader(f, delimiter=";")
             i = 0
             for row in reader:
@@ -45,8 +45,8 @@ class CSVDataReader(IDataReader):
     def retrieve_column_info(self, filepath):
         import csv
         d = {}
-        with open(filepath, 'r') as f:
-            reader = csv.reader(f)
+        with open(filepath, 'r', encoding="utf-8") as f:
+            reader = csv.reader(f, delimiter=";")
             i = 0
             for row in reader:
                 if i == 0:

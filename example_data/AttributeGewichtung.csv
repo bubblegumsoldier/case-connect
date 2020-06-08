@@ -1,25 +1,25 @@
-﻿Attribut,Gewichtung
-id,0,caseconnect.cbr.simple_string_similarity,"None"
-kuerzel,0,caseconnect.cbr.simple_string_similarity,"None"
-alter,10,caseconnect.cbr.numerical_similarity_calculator,"NumericalSimilarityCalculator()"
-geschlecht,6,caseconnect.cbr.simple_string_similarity,"SimpleStringSimilarityCalculator()"
-hauptdiagnose,10,caseconnect.cbr.highest_result_in_list_similarity,"HighestResultInListSimilarityCalculator('simple_string')"
-nebendiagnose,6,caseconnect.cbr.list_match_sum_similarity,"ListMatchSumSimilarityCalculator('simple_string')"
-vorherige_erkrankungen,1,caseconnect.cbr.simple_string_similarity,"SimpleStringSimilarityCalculator()"
-sonstige_anamnese,4,caseconnect.cbr.simple_string_similarity,"SimpleStringSimilarityCalculator()"
-leistungsschwaeche,7,caseconnect.cbr.simple_string_similarity,"SimpleStringSimilarityCalculator()"
-atembeschwerden,8,caseconnect.cbr.simple_string_similarity,"SimpleStringSimilarityCalculator()"
-husten,7,caseconnect.cbr.simple_string_similarity,"SimpleStringSimilarityCalculator()"
-sonstige_untersuchungsbefunde,5,caseconnect.cbr.simple_string_similarity,"SimpleStringSimilarityCalculator()"
-blutdruck,8,caseconnect.cbr.simple_string_similarity,"SimpleStringSimilarityCalculator()"
-puls,10,caseconnect.cbr.simple_string_similarity,"SimpleStringSimilarityCalculator()"
-temperatur,10,caseconnect.cbr.simple_string_similarity,"SimpleStringSimilarityCalculator()"
-sp_o2,10,caseconnect.cbr.simple_string_similarity,"SimpleStringSimilarityCalculator()"
-bmi,10,caseconnect.cbr.simple_string_similarity,"SimpleStringSimilarityCalculator()"
-pulmo,6,caseconnect.cbr.simple_string_similarity,"SimpleStringSimilarityCalculator()"
-abdomen,1,caseconnect.cbr.simple_string_similarity,"SimpleStringSimilarityCalculator()"
-diagnostik,10,caseconnect.cbr.simple_string_similarity,"SimpleStringSimilarityCalculator()"
-laborwerte,10,caseconnect.cbr.simple_string_similarity,"SimpleStringSimilarityCalculator()"
-lungenfunktion,7,caseconnect.cbr.simple_string_similarity,"SimpleStringSimilarityCalculator()"
-roentgen,7,caseconnect.cbr.simple_string_similarity,"SimpleStringSimilarityCalculator()"
-medikation,10,caseconnect.cbr.simple_string_similarity,"SimpleStringSimilarityCalculator()"
+﻿Attribut;Gewichtung;Modulpfad;Konstruktor
+id;0;caseconnect.cbr.simple_string_similarity;None
+kuerzel;0;caseconnect.cbr.simple_string_similarity;None
+alter;10;caseconnect.cbr.numerical_similarity_calculator;NumericalSimilarityCalculator()
+geschlecht;6;caseconnect.cbr.simple_string_similarity;SimpleStringSimilarityCalculator()
+hauptdiagnose;10;caseconnect.cbr.highest_result_in_list_similarity;HighestResultInListSimilarityCalculator('simple_string')
+nebendiagnose;6;caseconnect.cbr.lot_list_similarity;LOTListSimilarity(0.8, [0, 0.5, 0.8, 0.9, 0.95], 'simple_string')
+vorherige_erkrankungen;1;caseconnect.cbr.lot_list_similarity;LOTListSimilarity(0.8, [0, 0.7, 0.9, 0.95], 'simple_string')
+sonstige_anamnese;4;caseconnect.cbr.lot_list_similarity;LOTListSimilarity(0.8, [0, 0.8, 0.95], 'simple_string')
+leistungsschwaeche;7;caseconnect.cbr.simple_string_similarity;SimpleStringSimilarityCalculator()
+atembeschwerden;8;caseconnect.cbr.simple_string_similarity;SimpleStringSimilarityCalculator()
+husten;7;caseconnect.cbr.simple_string_similarity;SimpleStringSimilarityCalculator()
+sonstige_untersuchungsbefunde;5;caseconnect.cbr.lot_list_similarity;LOTListSimilarity(0.8, [0, 0.8, 0.95], 'simple_string')
+blutdruck;8;caseconnect.cbr.avg_list_similarity;AvgListSimilarity('/', 'numerical')
+puls;10;caseconnect.cbr.numerical_similarity_calculator;NumericalSimilarityCalculator()
+temperatur;10;caseconnect.cbr.numerical_similarity_calculator;NumericalSimilarityCalculator(dampening_factor=35)
+sp_o2;10;caseconnect.cbr.numerical_similarity_calculator;NumericalSimilarityCalculator(dampening_factor=85)
+bmi;10;caseconnect.cbr.numerical_similarity_calculator;NumericalSimilarityCalculator(dampening_factor=15)
+pulmo;6;caseconnect.cbr.lot_list_similarity;LOTListSimilarity(0.8, [0, 0.7, 0.9, 0.95], 'simple_string')
+abdomen;1;caseconnect.cbr.lot_list_similarity;LOTListSimilarity(0.8, [0, 0.5, 0.8, 0.9, 0.95], 'simple_string')
+diagnostik;10;caseconnect.cbr.lot_list_similarity;LOTListSimilarity(0.8, [0, 0.7, 0.9, 0.95], 'simple_string')
+laborwerte;10;caseconnect.cbr.lot_list_similarity;LOTListSimilarity(0.8, [0, 0.7, 0.9, 0.95], 'simple_string')
+lungenfunktion;7;caseconnect.cbr.highest_result_in_list_similarity;HighestResultInListSimilarityCalculator('simple_string')
+roentgen;7;caseconnect.cbr.lot_list_similarity;LOTListSimilarity(0.8, [0, 0.8, 0.95], 'simple_string')
+medikation;10;caseconnect.cbr.lot_list_similarity;LOTListSimilarity(0.8, [0, 0.7, 0.9, 0.95], 'simple_string')

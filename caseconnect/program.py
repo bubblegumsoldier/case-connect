@@ -11,7 +11,7 @@ class Program:
     def main(self):
         patient_repository = PatientRepository(initialize=True)
         similar_patients = patient_repository.retrieve_similar_patients("A")
-        output = dump(similar_patients, Dumper=Dumper)
-        text_file = open("output.yml", "w")
+        output = dump(similar_patients, Dumper=Dumper, encoding='utf-8', allow_unicode=True)
+        text_file = open("output.yml", "wb")
         text_file.write(output)
         text_file.close()

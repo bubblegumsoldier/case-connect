@@ -10,9 +10,27 @@ class NumericalSimilarityCalculator(ISimilarityCalculator):
     There is no source for that approach and its suitability is questionable.
     """
 
+    _dampening = 0
+    def __init__(self, dampening_factor :float = 0):
+        self._dampening = dampening_factor
+
     def get_similarity(self, a, b) -> ISimilarityResult:
-        a = float(a)
-        b = float(b)
-        numerical_distance = float(min(a, b) / max(a, b))
-        reason = "{}/{}".format(min(a, b), max(a, b))
+        try:
+            a = float(a)
+            b = float(b)
+            a_dampened = a - self._dampening
+            b_dampened = b - self._dampening
+        except ValueError:
+            return LocalSimilarityResult(score=0, description={"reason":"One value couldn't be converted to float ({}, {})".format(a, b)})
+        a_dampened = max(0, a_dampened) # may not be below zero
+        b_dampened = max(0, b_dampened) # may not be below zero
+        numerical_distance = float(min(a_dampened, b_dampened) / max(a_dampened, b_dampened))
+        reason = "({:.2f}-{:.2f})/({:.2f}-{:.2f})={:.2f}/{:.2f}={:.2f}".format(
+            min(a, b),
+            self._dampening,
+            max(a, b),
+            self._dampening,
+            min(a_dampened, b_dampened),
+            max(a_dampened, b_dampened),
+            numerical_distance)
         return LocalSimilarityResult(score=numerical_distance, description={"reason":reason})

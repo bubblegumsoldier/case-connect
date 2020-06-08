@@ -4,7 +4,9 @@ from .results.local_similarity_result import LocalSimilarityResult
 
 class SimpleStringSimilarityCalculator(ISimilarityCalculator):
     def get_similarity(self, a, b) -> ISimilarityResult:
-        if a.lower() == b.lower():
+        a = a.lower().strip().lstrip()
+        b = b.lower().strip().lstrip()
+        if a == b:
             return LocalSimilarityResult(score=1, description={"reason":"{} == {}".format(a, b)})
         else:
             return LocalSimilarityResult(score=0, description={"reason":"{} != {}".format(a, b)})
