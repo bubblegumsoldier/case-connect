@@ -11,7 +11,7 @@ leistungsschwaeche;7;caseconnect.cbr.simple_string_similarity;SimpleStringSimila
 atembeschwerden;8;caseconnect.cbr.simple_string_similarity;SimpleStringSimilarityCalculator()
 husten;7;caseconnect.cbr.simple_string_similarity;SimpleStringSimilarityCalculator()
 sonstige_untersuchungsbefunde;5;caseconnect.cbr.lot_list_similarity;LOTListSimilarity(0.8, [0, 0.8, 0.95], 'simple_string')
-blutdruck;8;caseconnect.cbr.avg_list_similarity;AvgListSimilarity('/', 'numerical')
+blutdruck;8;caseconnect.cbr.avg_list_similarity;AvgListSimilarity('/', 'numerical', dampening_factor=50)
 puls;10;caseconnect.cbr.numerical_similarity_calculator;NumericalSimilarityCalculator()
 temperatur;10;caseconnect.cbr.numerical_similarity_calculator;NumericalSimilarityCalculator(dampening_factor=35)
 sp_o2;10;caseconnect.cbr.numerical_similarity_calculator;NumericalSimilarityCalculator(dampening_factor=85)
