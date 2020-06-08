@@ -5,7 +5,12 @@ from .results.local_similarity_result import LocalSimilarityResult
 class NumericalSimilarityCalculator(ISimilarityCalculator):
     """
     An example similarity calculator that can only compare two float values
-    by dividing the smaller number through the larger number.
+    by dividing the smaller number through the larger number. Prior to that from
+    both numbers the dampening factor will be substracted. That can be used to compensate
+    for very large numbers naturally lying quite close to each other
+    (e.g. BMI, Temperature and Blood pressure). For temperature e.g. we will always be between
+    36 and 40. So we can deduct 35 from each value to make the increase the impact
+    of these minor differences. For BMI for example we can use the dampening factor 14.
 
     There is no source for that approach and its suitability is questionable.
     """
