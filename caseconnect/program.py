@@ -1,4 +1,5 @@
 from .patient_repository import PatientRepository
+from .data_writer.results_data_writer import ResultsDataWriter
 import json
 from yaml import dump
 from yaml import load, dump
@@ -19,6 +20,8 @@ class Program:
         patient_repository = PatientRepository(initialize=True)
         similar_patients = patient_repository.retrieve_similar_patients("A")
         output = json.dumps(similar_patients, default=serialize, ensure_ascii=False).encode('utf8')
+        result_writer = ResultsDataWriter()
+        result_writer.save_results(output, 'PatientA')
         text_file = open("output.json", "wb")
         text_file.write(output)
         text_file.close()
