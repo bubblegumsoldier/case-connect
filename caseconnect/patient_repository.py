@@ -38,3 +38,9 @@ class PatientRepository:
         """
 
         return self.result_retriever.retrieve_result_for_patient_id(self.patients, query_patient_id, n)
+
+    def retrieve_single_patient(self, query_patient_id :str):
+        """
+        Returns the patient with the given id
+        """
+        return [p for p in self.patients if p.id == query_patient_id][0]
