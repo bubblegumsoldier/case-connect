@@ -13,7 +13,6 @@ class CSVDataReader(IDataReader):
                 if i == 0:
                     i += 1
                     continue #Skip header
-                print(row)
                 patient_list.append(Patient(
                     row[0],
                     row[1],

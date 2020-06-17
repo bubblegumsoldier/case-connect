@@ -3,6 +3,7 @@ from .results.local_similarity_result import LocalSimilarityResult
 from .results.global_similarity_result import GlobalSimilarityResult
 from .results.local_similarity_result_wrapper import LocalSimilarityResultWrapper
 from .column_info import get_similarity_calculator_for_column
+from .results.empty_similarity_result_wrapper import EmptySimilarityResultWrapper
 from .column_info import get_default_weight_for_column
 from typing import List
 
@@ -38,6 +39,8 @@ class GlobalSimilarityCalculator(ISimilarityCalculator):
         local_result_wrappers = []
         for ranking in column_rankings:
             # Simple score * default_weighting
+            if ranking["local_similarity"].empty:
+                local_result_wrappers.append(EmptySimilarityResultWrapper(ranking["local_similarity"], ranking["col_id"]))
             default_weight = get_default_weight_for_column(ranking["col_id"])
             custom_weight = 1
             default_weighted_score = ranking["local_similarity"].score * default_weight
@@ -56,7 +59,12 @@ class GlobalSimilarityCalculator(ISimilarityCalculator):
         return local_result_wrappers
     
     def _get_overall_score(self, local_result_wrappers) -> GlobalSimilarityResult:
+        sum_of_weights = 0
         sum_of_custom_weighted_scores = 0
         for local_result_wrapper in local_result_wrappers:
+            if type(local_result_wrapper) is EmptySimilarityResultWrapper:
+                continue
             sum_of_custom_weighted_scores += local_result_wrapper.custom_weighted_score
-        return GlobalSimilarityResult(sum_of_custom_weighted_scores, local_result_wrappers)
+            sum_of_weights += local_result_wrapper.default_weight + local_result_wrapper.custom_weight
+        overall_score = sum_of_custom_weighted_scores / sum_of_weights
+        return GlobalSimilarityResult(overall_score, local_result_wrappers, sum_of_weights, sum_of_custom_weighted_scores)

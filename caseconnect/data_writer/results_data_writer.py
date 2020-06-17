@@ -182,7 +182,6 @@ class ResultsDataWriter:
         try:
             value = float(value)
         except:
-            ValueError
             return value
 
         str_tmp = ""
@@ -273,6 +272,8 @@ class ResultsDataWriter:
         for attribute in patient["global_similarity"]["local_similarity_wrappers"]:
 
             if attribute["column_id"] == attribute_name:
+                if not "default_weighted_score" in attribute:
+                    return 0
                 return self.convert_number(attribute["default_weighted_score"])
 
         return "n/a"

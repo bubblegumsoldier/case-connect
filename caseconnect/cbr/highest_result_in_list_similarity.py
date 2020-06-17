@@ -16,6 +16,8 @@ class HighestResultInListSimilarityCalculator(ISimilarityCalculator):
         self.child_calculator = get_calculator(calc_type, **kwargs)
 
     def get_similarity(self, a :str, b :str) -> ISimilarityResult:
+        if a.strip() == "-" or b.strip() == '-' or len(a) <= 0 or len(b) <= 0:
+            return LocalSimilarityResult(0, {'reason': 'Empty value a: {}, b: {}'.format(a, b)}, True)
         a_values = a.split(delimiter)
         b_values = b.split(delimiter)
         highest_score = 0

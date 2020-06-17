@@ -20,6 +20,8 @@ class ListMatchSumSimilarityCalculator(ISimilarityCalculator):
         self.delimiter = delimiter
 
     def get_similarity(self, a :str, b :str) -> ISimilarityResult:
+        if a.strip() == "-" or b.strip() == '-' or len(a) <= 0 or len(b) <= 0:
+            return LocalSimilarityResult(0, {'reason': 'Empty value a: {}, b: {}'.format(a, b)}, True)
         a_values = a.split(self.delimiter)
         b_values = b.split(self.delimiter)
         all_similarities = []
