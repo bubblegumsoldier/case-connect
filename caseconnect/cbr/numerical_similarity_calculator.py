@@ -20,6 +20,8 @@ class NumericalSimilarityCalculator(ISimilarityCalculator):
         self._dampening = dampening_factor
 
     def get_similarity(self, a, b) -> ISimilarityResult:
+        if a.strip() == "-" or b.strip() == '-':
+            return LocalSimilarityResult(score=0, description="Empty value", empty=True)
         try:
             a = float(a)
             b = float(b)
