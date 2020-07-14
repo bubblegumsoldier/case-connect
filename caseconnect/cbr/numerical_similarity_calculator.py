@@ -16,10 +16,16 @@ class NumericalSimilarityCalculator(ISimilarityCalculator):
     """
 
     _dampening = 0
-    def __init__(self, dampening_factor :float = 0):
+    _punish_empty_values = False
+
+    def __init__(self, dampening_factor :float = 0, punish_empty_values=False):
         self._dampening = dampening_factor
+        self._punish_empty_values = punish_empty_values
 
     def get_similarity(self, a, b) -> ISimilarityResult:
+        if not self._punish_empty_values:
+            if a.strip() == "-" or b.strip() == '-':
+                return LocalSimilarityResult(score=0, description="Empty value", empty=True)
         try:
             a = float(a)
             b = float(b)

@@ -17,16 +17,17 @@ def serialize(obj):
 
 class Program:
     def main(self):
+        query_patient_id = 'A'
         patient_repository = PatientRepository(initialize=True)
-        query_patient = patient_repository.retrieve_single_patient("A")
-        similar_patients = patient_repository.retrieve_similar_patients("A")
+        query_patient = patient_repository.retrieve_single_patient(query_patient_id)
+        similar_patients = patient_repository.retrieve_similar_patients(query_patient_id)
         output_wrapper = {
             "query_patient": query_patient,
             "similar_patients": similar_patients
         }
         output = json.dumps(output_wrapper, default=serialize, ensure_ascii=False).encode('utf8')
-        #result_writer = ResultsDataWriter()
-        #result_writer.save_results(output, 'PatientA')
+        result_writer = ResultsDataWriter()
+        result_writer.save_results(output, 'Patient' + query_patient_id)
         text_file = open("output.json", "wb")
         text_file.write(output)
         text_file.close()

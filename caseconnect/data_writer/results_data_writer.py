@@ -22,11 +22,11 @@ class ResultsDataWriter:
     def save_results(self, json_file, patient_name):
         """
         Prepares data into list-like structure, that can be saved into CSV and Excel files.
-        
+
         Data will be written to CSV file in Folder "output_csv".
         Data will be written to Excel file in Folder "output_excel".
         If folders are missing, they will be created.
-        
+
         :param json_file: results in JSON format
         :param patient_name: used for CSV/ Excel file titles
         """
@@ -82,18 +82,18 @@ class ResultsDataWriter:
         # fill first column with attribute ID
         # fill second column with corresponding similarity function descriptions
         # fill third column with corresponding default weights
-        # fourth column is reserved for reference patient attribute values, still missing
-        for name in data[0]["patient"]:
-            rows.append([name])
-            rows[-1].append(self.attribute_info[name]["sim"])
-            rows[-1].append(self.attribute_info[name]["weight"])
-            rows[-1].append("n/a")  # values of reference patient (still missing)
-            self.attribute_row_indices[name] = index
+        # fourth column is reserved for reference patient attribute values
+        for attribute_name in data["query_patient"].keys():
+            rows.append([attribute_name])
+            rows[-1].append(self.attribute_info[attribute_name]["sim"])
+            rows[-1].append(self.attribute_info[attribute_name]["weight"])
+            rows[-1].append(self.convert_number(data["query_patient"][attribute_name]))  # values of reference patient
+            self.attribute_row_indices[attribute_name] = index
             index += 1
 
         index = 0
 
-        for patient in data:
+        for patient in data["similar_patients"]:
 
             index += 1
 
@@ -149,7 +149,7 @@ class ResultsDataWriter:
         :param patient_name: patient name that is used for file title
         """
 
-        file_path = './output_excel/' + patient_name + '.xlsx'
+        file_path = './output_excel/output_' + patient_name + '.xlsx'
 
         try:
             mkdir('./output_excel/')
