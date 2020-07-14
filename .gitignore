@@ -3,3 +3,5 @@ output.yml
 output.json
 output_csv/*
 output_excel/*
+.vscode/*
+.idea/*
