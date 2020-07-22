@@ -13,31 +13,12 @@ class CSVDataReader(IDataReader):
                 if i == 0:
                     i += 1
                     continue #Skip header
-                patient_list.append(Patient(
-                    row[0],
-                    row[1],
-                    row[2],
-                    row[3],
-                    row[4],
-                    row[5],
-                    row[6],
-                    row[7],
-                    row[8],
-                    row[9],
-                    row[10],
-                    row[11],
-                    row[12],
-                    row[13],
-                    row[14],
-                    row[15],
-                    row[16],
-                    row[17],
-                    row[18],
-                    row[19],
-                    row[20],
-                    row[21],
-                    row[22],
-                    row[23]))
+
+                # Attention: This assumes that the attributes are in the same order as the CSV input.
+                # In our case that is the case. If attributes will be added in the future take care
+                # to add these at the correct index as a parameter or update this part to make it more specific,
+                # e.g. Patient(pulmo=row[index], ...)
+                patient_list.append(Patient(*row))
                 i = i + 1
         return patient_list
     
