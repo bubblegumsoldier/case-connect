@@ -14,20 +14,24 @@ class Patient:
         sonstige_anamnese,
         leistungsschwaeche,
         atembeschwerden,
-        husten,
+        produktiver_husten,
+        unproduktiver_husten,
         sonstige_untersuchungsbefunde,
         blutdruck,
         puls,
         temperatur,
-        sp_o2,
+        sp_o2_mit_o2,
+        sp_o2_ohne_o2,
         bmi,
         pulmo,
+        erhoehte_af,
         abdomen,
         diagnostik,
         laborwerte,
         lungenfunktion,
         roentgen,
-        medikation
+        medikation,
+        *args
         #...
         ):
         self.id = id
@@ -40,14 +44,17 @@ class Patient:
         self.sonstige_anamnese = sonstige_anamnese
         self.leistungsschwaeche = leistungsschwaeche
         self.atembeschwerden = atembeschwerden
-        self.husten = husten
+        self.produktiver_husten = produktiver_husten
+        self.unproduktiver_husten = unproduktiver_husten
         self.sonstige_untersuchungsbefunde = sonstige_untersuchungsbefunde
         self.blutdruck = blutdruck
         self.puls = puls
         self.temperatur = temperatur
-        self.sp_o2 = sp_o2
+        self.sp_o2_mit_o2 = sp_o2_mit_o2
+        self.sp_o2_ohne_o2 = sp_o2_ohne_o2
         self.bmi = bmi
         self.pulmo = pulmo
+        self.erhoehte_af = erhoehte_af
         self.abdomen = abdomen
         self.diagnostik = diagnostik
         self.laborwerte = laborwerte
