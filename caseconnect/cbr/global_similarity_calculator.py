@@ -41,6 +41,7 @@ class GlobalSimilarityCalculator(ISimilarityCalculator):
             # Simple score * default_weighting
             if ranking["local_similarity"].empty:
                 local_result_wrappers.append(EmptySimilarityResultWrapper(ranking["local_similarity"], ranking["col_id"]))
+                continue
             default_weight = get_default_weight_for_column(ranking["col_id"])
             custom_weight = 1
             default_weighted_score = ranking["local_similarity"].score * default_weight
