@@ -1,3 +1,4 @@
 pyyaml
 python-Levenshtein
 xlsxwriter
+openpyxl

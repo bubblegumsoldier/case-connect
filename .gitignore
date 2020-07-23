@@ -2,6 +2,6 @@
 output.yml
 output.json
 output_csv/*
-output_excel/*
+output_excel/output_*
 .vscode/*
 .idea/*

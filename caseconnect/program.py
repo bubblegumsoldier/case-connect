@@ -27,7 +27,7 @@ class Program:
         }
         output = json.dumps(output_wrapper, default=serialize, ensure_ascii=False).encode('utf8')
         result_writer = ResultsDataWriter()
-        result_writer.save_results(output, 'Patient' + query_patient_id)
+        result_writer.save_results(output, 'Patient' + query_patient_id, True)
         text_file = open("output.json", "wb")
         text_file.write(output)
         text_file.close()

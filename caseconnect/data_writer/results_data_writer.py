@@ -2,7 +2,7 @@ from json import loads
 from csv import reader, writer
 from os import mkdir
 from xlsxwriter.workbook import Workbook
-
+from openpyxl import load_workbook
 
 class ResultsDataWriter:
     """
@@ -19,16 +19,19 @@ class ResultsDataWriter:
         self.attribute_row_indices = dict()
         self.attribute_info = dict()
 
-    def save_results(self, json_file, patient_name):
+    def save_results(self, json_file, patient_name, skip_template):
         """
         Prepares data into list-like structure, that can be saved into CSV and Excel files.
 
         Data will be written to CSV file in Folder "output_csv".
         Data will be written to Excel file in Folder "output_excel".
         If folders are missing, they will be created.
+        skip_template is used to disable/ enable write procedure to template file. Bear in mind that
+        writing to existing excelfile takes a few seconds. May be disabled for debugging purposes.
 
         :param json_file: results in JSON format
         :param patient_name: used for CSV/ Excel file titles
+        :param skip_template: boolean variable used to enable/disable data writing to excel template file
         """
 
         csv_file = open("./example_data/AttributeGewichtung.csv", 'r')  # needed for similarity functions column
@@ -125,6 +128,7 @@ class ResultsDataWriter:
 
         self.saveas_CSV(rows, csv_file)
         self.saveas_XLSX(rows, patient_name)
+        self.saveas_XLSX_Template(rows, skip_template)
 
     def saveas_CSV(self, data: list, csv_file: open):
         """
@@ -164,6 +168,29 @@ class ResultsDataWriter:
                 worksheet.write(r, c, str(item))
 
         workbook.close()
+
+    def saveas_XLSX_Template(self, data: list, skip: bool):
+        """
+        Saves data to pre prepared excel template file
+
+        :param data: data that will be saved to excel file
+        :param skip: if True, this method will be skipped
+        """
+
+        if skip:
+            return None
+
+
+        file_path = './output_excel/Output.xlsx'
+
+        workbook = load_workbook(file_path)
+        worksheet = workbook['data']
+
+        for r, row in enumerate(data):
+            for c, item in enumerate(row):
+                worksheet.cell(row=r + 1, column=c + 1, value=str(item))
+
+        workbook.save(file_path)
 
     def convert_number(self, value) -> str:
         """
